@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react'; // <-- CHANGED: Added Download icon
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -47,7 +47,7 @@ export default function Navbar() {
             }}
             className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400 hover:scale-105 transition-transform"
           >
-            SD
+            MSD
           </a>
 
           <div className="hidden lg:flex items-center space-x-8">
@@ -65,6 +65,20 @@ export default function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-blue-400 group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
+            
+            {/* --- NEW DOWNLOAD BUTTON (DESKTOP) --- */}
+            <a
+              href="/Sai_Dhanush_resume.pdf" // <-- UPDATE THIS PATH
+              download="M_Sai_Dhanush_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 bg-gradient-to-r from-purple-400 to-blue-400 text-white px-4 py-2 rounded-full font-medium hover:scale-105 transition-transform"
+            >
+              <span>Resume</span>
+              <Download className="w-5 h-5" />
+            </a>
+            {/* --- END NEW BUTTON --- */}
+
           </div>
 
           <button
@@ -94,6 +108,19 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
+              
+              {/* --- NEW DOWNLOAD BUTTON (MOBILE) --- */}
+              <a
+                href="/Sai_Dhanush_resume.pdf" // <-- UPDATE THIS PATH
+                download="M_Sai_Dhanush_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between text-white hover:text-purple-400 transition-colors font-medium py-2"
+              >
+                <span>Download Resume</span>
+                <Download className="w-5 h-5" />
+              </a>
+              {/* --- END NEW BUTTON --- */}
             </div>
           </div>
         </div>
@@ -101,3 +128,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
