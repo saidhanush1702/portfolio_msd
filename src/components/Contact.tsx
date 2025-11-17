@@ -1,5 +1,6 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
+import emailjs from "emailjs-com";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,11 +10,43 @@ export default function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert('Thank you for your message! This is a demo form. In production, this would send your message.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+  
+  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_xxx";
+  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_yyy";
+  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "user_zzz";
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    await emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: "muthyalasaidhanush@gmail.com",
+      },
+      PUBLIC_KEY
+    );
+
+    alert("Message sent successfully!");
+
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    });
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+    alert("Failed to send message. Please try again.");
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
