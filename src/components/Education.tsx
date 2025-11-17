@@ -41,12 +41,12 @@ export default function Education() {
 
             {education.map((edu, index) => (
               <div key={index} className="relative mb-12 md:ml-20 animate-slide-right" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className="absolute -left-[3.25rem] top-6 w-6 h-6 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full border-4 border-white shadow-lg hover:shadow-xl hover:shadow-purple-500/50 hidden md:block group/dot cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse" style={{ animationDelay: `${index * 0.3}s` }}></div>
+                <div className="absolute -left-[3.70rem] top-6 w-6 h-6 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full border-4 border-white shadow-lg hover:shadow-xl hover:shadow-purple-500/50 hidden md:block group/dot cursor-pointer transition-all duration-300 hover:scale-125 animate-pulse" style={{ animationDelay: `${index * 0.3}s` }}></div>
 
                 <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-purple-100 group cursor-pointer relative overflow-hidden animate-scale-in" style={{ animationDelay: `${index * 0.15}s` }}>
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600/0 via-purple-600/0 to-blue-600/0 group-hover:from-purple-600/5 group-hover:via-purple-600/3 group-hover:to-blue-600/5 transition-all duration-500"></div>
                   <div className="flex items-start gap-4 relative z-10">
-                    <div className="text-4xl group-hover:scale-125 group-hover:animate-float-icon transition-all duration-300">{edu.icon}</div>
+                    <div className="text-4xl transition-all duration-300 icon-rotate group">{edu.icon}</div>
                     <div className="flex-1">
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
                         <div>
